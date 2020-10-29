@@ -70,6 +70,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'abc_app.Account'
+
 WSGI_APPLICATION = 'abc_project.wsgi.application'
 
 

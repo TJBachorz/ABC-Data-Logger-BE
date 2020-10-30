@@ -3,8 +3,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class MyAccountManager(BaseUserManager):
 
-    # def login(email, password):
-
     def create_user(self, email, username, password=None):
         if not email:
             raise ValueError("Users must have an email address")
@@ -43,7 +41,6 @@ class Account(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
@@ -57,3 +54,17 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+        
+class Case(models.Model):
+    name = models.CharField(max_length=30)
+    dob = models.DateTimeField(verbose_name='Date of Birth')
+
+    def __str__(self):
+        return f'{self.name}, age: {self.age}'
+
+class CaseLink(models.Model):
+    account = models.ForeignKey(Account, related_name="CaseLink", on_delete=models.CASCADE)
+    case = models.ForeignKey(Case, related_name="CaseLink", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.id

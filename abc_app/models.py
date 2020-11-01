@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+import datetime
+
 
 class MyAccountManager(BaseUserManager):
 
@@ -57,23 +59,26 @@ class Account(AbstractBaseUser):
         
 class Case(models.Model):
     name = models.CharField(max_length=30)
-    dob = models.DateTimeField(verbose_name='Date of Birth')
+    dob = models.DateField(verbose_name='Date of Birth')
+    accounts = models.ManyToManyField(Account, related_name="cases", through='CaseLink')
 
     def __str__(self):
-        return f'{self.name}, age: {self.age}'
+        return f'{self.id}: {self.name}, {self.dob}'
 
 class CaseLink(models.Model):
-    account = models.ForeignKey(Account, related_name="CaseLink", on_delete=models.CASCADE)
-    case = models.ForeignKey(Case, related_name="CaseLink", on_delete=models.CASCADE)
+    account = models.ForeignKey(Account, related_name="caselink", on_delete=models.CASCADE)
+    case = models.ForeignKey(Case, related_name="caselink", on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.id
+        return f'{self.id}'
 
 class Incident(models.Model):
     antecedent = models.CharField(max_length=60)
     behavior = models.CharField(max_length=60)
     consequence = models.CharField(max_length=60)
-    case = models.ForeignKey(Case, related_name="Incident", on_delete=models.CASCADE)
+    case = models.ForeignKey(Case, related_name="incidents", on_delete=models.CASCADE)
+    date = models.DateField(verbose_name="Date of Incident")
+    time = models.TimeField(verbose_name="Time of Incident")
 
     def __str__(self):
-        return f'{case.antecedent} | {case.behavior} | {case.consequence}'
+        return f'A: {self.antecedent}, B: {self.behavior}, C: {self.consequence}, {self.date}, {self.time}'

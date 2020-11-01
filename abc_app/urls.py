@@ -1,11 +1,12 @@
 from django.urls import path, include
 from rest_framework import routers
-from .views import AccountView, CaseView, CaseLinkView
+from .views import AccountView, CaseView, CaseLinkView, IncidentView
 
 router = routers.DefaultRouter()
 router.register('accounts', AccountView)
-router.register('Cases', CaseView)
-router.register('CaseLink', CaseLinkView)
+router.register('cases', CaseView)
+router.register('caselinks', CaseLinkView)
+router.register('incidents', IncidentView)
 
 urlpatterns = [
     path('', include(router.urls))

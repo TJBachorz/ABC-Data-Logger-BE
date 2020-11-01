@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Account, Case, CaseLink
+from .models import Account, Case, CaseLink, Incident
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,3 +17,9 @@ class CaseLinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = CaseLink
         fields = ['id', 'account', 'case']
+
+class IncidentSerializer(serializers.ModelSerializer):
+    case = CaseSerializer(many=True)
+    class Meta:
+        model = Incident
+        fields = ['id', 'antecedent', 'behaviour', 'consequence', 'case']

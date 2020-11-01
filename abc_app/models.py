@@ -68,3 +68,12 @@ class CaseLink(models.Model):
 
     def __str__(self):
         return self.id
+
+class Incident(models.Model):
+    antecedent = models.CharField(max_length=60)
+    behavior = models.CharField(max_length=60)
+    consequence = models.CharField(max_length=60)
+    case = models.ForeignKey(Case, related_name="Incident", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{case.antecedent} | {case.behavior} | {case.consequence}'

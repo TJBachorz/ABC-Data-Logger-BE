@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .models import Account, Case, CaseLink
-from .serializers import AccountSerializer, CaseSerializer, CaseLinkSerializer
+from .models import Account, Case, CaseLink, Incident
+from .serializers import AccountSerializer, CaseSerializer, CaseLinkSerializer, IncidentSerializer
 
 class AccountView(viewsets.ModelViewSet):
     queryset = Account.objects.all()
@@ -14,3 +14,7 @@ class CaseView(viewsets.ModelViewSet):
 class CaseLinkView(viewsets.ModelViewSet):
     queryset = CaseLink.objects.all()
     serializer_class = CaseLinkSerializer
+
+class IncidentView(viewsets.ModelViewSet):
+    queryset = Incident.objects.all()
+    serializer_class = IncidentSerializer

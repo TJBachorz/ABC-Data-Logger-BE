@@ -4,11 +4,17 @@ from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny
 from .models import Account, Case, CaseLink, Incident
-from .serializers import LoginSerializer, AccountSerializer, CaseSerializer, CaseObjectSerializer, CaseLinkSerializer, IncidentSerializer, AccountObjectSerializer
+from .serializers import LoginSerializer, AccountSerializer, CaseSerializer, CaseObjectSerializer, CaseLinkSerializer, IncidentSerializer
+
+import pdb
 
 class AccountView(viewsets.ModelViewSet):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
+
+    def list(self, request):
+        serializer = AccountSerializer(request.user)
+        return Response(serializer.data)
 
 class UserCreateView(CreateAPIView):
     serializer_class = AccountSerializer
@@ -24,7 +30,6 @@ class UserCreateView(CreateAPIView):
             'status': status_code,
             'message': "Hooray you made it!",
         }
-
         return Response(response, status_code)
 
 class LoginView(CreateAPIView):
@@ -37,13 +42,9 @@ class LoginView(CreateAPIView):
         status_code = status.HTTP_200_OK
         response = {
             'token': serializer.data['token'], 
-            'username': serializer.data['username']
+            'email': serializer.data['email'],
         }
         return Response(response, status_code)
-
-class AccountObjectView(viewsets.ModelViewSet):
-    queryset = Account.objects.all()
-    serializer_class = AccountObjectSerializer
 
 class CaseView(viewsets.ModelViewSet):
     queryset = Case.objects.all()
@@ -56,6 +57,7 @@ class CaseObjectView(viewsets.ModelViewSet):
 class CaseLinkView(viewsets.ModelViewSet):
     queryset = CaseLink.objects.all()
     serializer_class = CaseLinkSerializer
+    # write new post request, token has id, 
 
 class IncidentView(viewsets.ModelViewSet):
     queryset = Incident.objects.all()

@@ -8,7 +8,7 @@ from rest_framework_jwt.settings import api_settings
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ['id', 'username', 'password']
+        fields = ['id', 'username', 'email', 'password']
         extra_kwargs = {'password': {'write_only': True}}
 
         def create(self, validated_data):

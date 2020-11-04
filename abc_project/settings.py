@@ -10,14 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import django_heroku
 from pathlib import Path
 from decouple import config
 import datetime
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -29,8 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://abc-dl-backend.herokuapp.com', '127.0.0.1', 'localhost']
-
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -87,7 +85,7 @@ DATABASES = {
 
     'default': {
 
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_pyscopg2',
 
         'NAME': 'ABC_DB',
 
@@ -137,11 +135,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
 
 AUTH_USER_MODEL = 'abc_app.Account'
 
@@ -176,3 +169,5 @@ JWT_AUTH = {
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
     'JWT_AUTH_COOKIE': None,
 }
+
+django_heroku.settings(locals())

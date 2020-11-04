@@ -29,15 +29,9 @@ class AccountSerializer(serializers.ModelSerializer):
         account = Account.objects.create(**validated_data)
         return account
 
-# class AccountObjectSerializer(serializers.ModelSerializer):
-#     cases = CaseObjectForAccountSerializer(many=True)
-#     class Meta:
-#         model = Account
-#         fields = ['id', 'username', 'email', 'cases']
-
 class CaseObjectSerializer(serializers.ModelSerializer):
-    accounts = AccountSerializer(many=True)
-    incidents = IncidentSerializer(many=True)
+    accounts = AccountSerializer(many=True, required=False)
+    incidents = IncidentSerializer(many=True, required=False)
     class Meta:
         model = Case
         fields = ['id', 'name', 'dob', 'accounts', 'incidents']

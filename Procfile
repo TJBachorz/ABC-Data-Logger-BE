@@ -1,0 +1,1 @@
+web: gunicorn abc_project.wsgi

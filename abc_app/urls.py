@@ -1,13 +1,16 @@
 from django.urls import path, include
 from rest_framework import routers
-from .views import AccountView, CaseView, CaseLinkView, IncidentView
+from .views import LoginView, UserCreateView, AccountView, CaseView, CaseLinkView, IncidentView, CaseObjectView
 
 router = routers.DefaultRouter()
 router.register('accounts', AccountView)
 router.register('cases', CaseView)
+router.register('caseobjects', CaseObjectView)
 router.register('caselinks', CaseLinkView)
 router.register('incidents', IncidentView)
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('signup/', UserCreateView.as_view()),
+    path('login', LoginView.as_view())
 ]

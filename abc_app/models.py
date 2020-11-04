@@ -1,9 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, UserManager
 import datetime
 
 
-class MyAccountManager(BaseUserManager):
+class MyAccountManager(UserManager):
 
     def create_user(self, email, username, password=None):
         if not email:
@@ -34,7 +34,7 @@ class MyAccountManager(BaseUserManager):
 
 class Account(AbstractBaseUser):
     id = models.AutoField(primary_key=True)
-    email = models.CharField(verbose_name="email", max_length=60, unique=True)
+    email = models.EmailField(verbose_name="email", max_length=60, unique=True)
     username = models.CharField(max_length=20, unique=True)
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='last login', auto_now=True)
@@ -43,10 +43,10 @@ class Account(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
+    REQUIRED_FIELDS = []
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
 
-    objects = MyAccountManager()
+    objects = UserManager()
 
     def __str__(self):
         return self.username

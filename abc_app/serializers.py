@@ -11,7 +11,7 @@ class IncidentSerializer(serializers.ModelSerializer):
         model = Incident
         fields = ['id', 'antecedent', 'behavior', 'consequence', 'date', 'time', 'case']
 
-class CaseObjectForAccountSerializer(serializers.ModelSerializer):
+class CaseObjectForAccountSerializer(serializers.ModelSerializer):  # <--- delete this later
     incidents = IncidentSerializer(many=True)
     class Meta:
         model = Case
@@ -37,9 +37,10 @@ class CaseObjectSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'dob', 'accounts', 'incidents']
 
 class CaseSerializer(serializers.ModelSerializer):
+    incidents = IncidentSerializer(many=True, required=False)
     class Meta:
         model = Case
-        fields = ['id', 'name', 'dob']  
+        fields = ['id', 'name', 'dob', 'incidents']  
 
 class CaseLinkSerializer(serializers.ModelSerializer):
     account = serializers.StringRelatedField(many=False)

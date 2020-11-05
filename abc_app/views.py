@@ -54,23 +54,23 @@ class CaseObjectView(viewsets.ModelViewSet):
     queryset = Case.objects.all()
     serializer_class = CaseObjectSerializer
 
-class CaseLinkView(viewsets.ModelViewSet):
-    queryset = CaseLink.objects.all()
+class CaseLinkView(CreateAPIView):
+    # queryset = CaseLink.objects.all()
     serializer_class = CaseLinkSerializer
 
-    # def post(self, request):
-    #     pdb.set_trace()
-    #     serializer = self.serializer_class(data=request.data)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save()
-    #     status_code = status.HTTP_201_CREATED
-    #     response = {
-    #         'user': serializer.data,
-    #         'status': status_code,
-    #         'message': "Hooray you made it!",
-    #     }
-    #     return Response(response, status_code)
-    # write new post request, token has id, 
+    def post(self, request):
+        pdb.set_trace()
+        # print(request.user)
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        status_code = status.HTTP_201_CREATED
+        response = {
+            'user': serializer.data,
+            'status': status_code,
+            'message': "Hooray you made it!",
+        }
+        return Response(response, status_code)
 
 class IncidentView(viewsets.ModelViewSet):
     queryset = Incident.objects.all()

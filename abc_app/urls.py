@@ -6,7 +6,7 @@ router = routers.DefaultRouter()
 router.register('accounts', AccountView)
 router.register('cases', CaseView)
 router.register('caseobjects', CaseObjectView)
-router.register('caselinks', CaseLinkView)
+router.register('caselinks', CaseLinkView.as_view())
 router.register('incidents', IncidentView)
 
 urlpatterns = [

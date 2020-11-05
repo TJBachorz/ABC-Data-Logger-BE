@@ -4,7 +4,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import update_last_login
 from rest_framework_jwt.settings import api_settings
-import pdb;
+import pdb
 
 class IncidentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -43,11 +43,20 @@ class CaseSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'dob', 'incidents']  
 
 class CaseLinkSerializer(serializers.ModelSerializer):
-    account = serializers.StringRelatedField(many=False)
-    case = serializers.StringRelatedField(many=False)
+    account = serializers.StringRelatedField(many=False, read_only=True)
+    case = serializers.StringRelatedField(many=False, read_only=True)
+    account_id = serializers.IntegerField(write_only=True)
+    case_id = serializers.IntegerField(write_only=True)
     class Meta:
         model = CaseLink
-        fields = ['id', 'account', 'case']
+        fields = ['id', 'account', 'case', 'account_id', 'case_id']
+
+    # def __init__(self, *args, **kwargs):
+    #     user = None
+    #     if 'user' in kwargs:
+    #         user = kwargs.pop('user')
+    #     super().__init__(*args, **kwargs)
+    #     self.user = user
 
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField(max_length=255)

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import status, viewsets
 from rest_framework.response import Response
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, ListCreateAPIView
 from rest_framework.permissions import AllowAny
 from .models import Account, Case, CaseLink, Incident
 from .serializers import LoginSerializer, AccountSerializer, CaseSerializer, CaseObjectSerializer, CaseLinkSerializer, IncidentSerializer
@@ -54,14 +54,13 @@ class CaseObjectView(viewsets.ModelViewSet):
     queryset = Case.objects.all()
     serializer_class = CaseObjectSerializer
 
-class CaseLinkView(CreateAPIView):
-    # queryset = CaseLink.objects.all()
+class CaseLinkView(ListCreateAPIView):
+    queryset = CaseLink.objects.all()
     serializer_class = CaseLinkSerializer
 
     def post(self, request):
-        pdb.set_trace()
-        # print(request.user)
-        serializer = self.serializer_class(data=request.data)
+        data = { 'case_id': request.data['case'], 'account_id': request.user.id }
+        serializer = self.serializer_class(data=data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         status_code = status.HTTP_201_CREATED

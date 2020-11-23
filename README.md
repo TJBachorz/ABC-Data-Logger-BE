@@ -67,6 +67,8 @@ The ABC Data Logger is currently under active development, with plans to release
 
 ## Contact
 
+Check out the frontend [here](https://github.com/TJBachorz/ABC-Data-Logger-FE)
+
 Author : TJ Bachorz
 
 [Github](https://github.com/TJBachorz) -- [Linked-in](https://www.linkedin.com/in/tjbachorz/) -- [Medium](https://tjbachorz.medium.com/)

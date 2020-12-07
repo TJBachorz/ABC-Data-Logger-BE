@@ -11,12 +11,6 @@ class IncidentSerializer(serializers.ModelSerializer):
         model = Incident
         fields = ['id', 'antecedent', 'behavior', 'consequence', 'date', 'time', 'case']
 
-class CaseObjectForAccountSerializer(serializers.ModelSerializer):  # <--- delete this later
-    incidents = IncidentSerializer(many=True)
-    class Meta:
-        model = Case
-        fields = ['id', 'name', 'dob', 'incidents']
-
 class AccountSerializer(serializers.ModelSerializer):
     cases = CaseObjectForAccountSerializer(many=True, required=False)
     class Meta:
@@ -28,13 +22,6 @@ class AccountSerializer(serializers.ModelSerializer):
         validated_data["password"] = make_password(validated_data["password"])
         account = Account.objects.create(**validated_data)
         return account
-
-class CaseObjectSerializer(serializers.ModelSerializer):
-    accounts = AccountSerializer(many=True, required=False)
-    incidents = IncidentSerializer(many=True, required=False)
-    class Meta:
-        model = Case
-        fields = ['id', 'name', 'dob', 'accounts', 'incidents']
 
 class CaseSerializer(serializers.ModelSerializer):
     incidents = IncidentSerializer(many=True, required=False)

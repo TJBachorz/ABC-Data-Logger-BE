@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView, ListCreateAPIView
 from rest_framework.permissions import AllowAny
 from .models import Account, Case, CaseLink, Incident
-from .serializers import LoginSerializer, AccountSerializer, CaseSerializer, CaseObjectSerializer, CaseLinkSerializer, IncidentSerializer
+from .serializers import LoginSerializer, AccountSerializer, CaseSerializer, CaseLinkSerializer, IncidentSerializer
 
 import pdb
 
@@ -49,10 +49,6 @@ class LoginView(CreateAPIView):
 class CaseView(viewsets.ModelViewSet):
     queryset = Case.objects.all()
     serializer_class = CaseSerializer
-
-class CaseObjectView(viewsets.ModelViewSet):
-    queryset = Case.objects.all()
-    serializer_class = CaseObjectSerializer
 
 class CaseLinkView(ListCreateAPIView):
     queryset = CaseLink.objects.all()

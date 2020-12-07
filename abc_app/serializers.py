@@ -44,13 +44,6 @@ class CaseLinkSerializer(serializers.ModelSerializer):
         model = CaseLink
         fields = ['id', 'account', 'case', 'account_id', 'case_id']
 
-    # def __init__(self, *args, **kwargs):
-    #     user = None
-    #     if 'user' in kwargs:
-    #         user = kwargs.pop('user')
-    #     super().__init__(*args, **kwargs)
-    #     self.user = user
-
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField(max_length=255)
     password = serializers.CharField(max_length=255, write_only = True)

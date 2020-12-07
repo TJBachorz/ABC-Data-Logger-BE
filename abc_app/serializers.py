@@ -11,6 +11,12 @@ class IncidentSerializer(serializers.ModelSerializer):
         model = Incident
         fields = ['id', 'antecedent', 'behavior', 'consequence', 'date', 'time', 'case']
 
+class CaseObjectForAccountSerializer(serializers.ModelSerializer):
+    incidents = IncidentSerializer(many=True)
+    class Meta:
+        model = Case
+        fields = ['id', 'name', 'dob', 'incidents']
+
 class AccountSerializer(serializers.ModelSerializer):
     cases = CaseObjectForAccountSerializer(many=True, required=False)
     class Meta:

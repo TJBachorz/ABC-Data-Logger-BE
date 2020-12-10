@@ -55,7 +55,13 @@ class CaseLinkView(ListCreateAPIView):
     serializer_class = CaseLinkSerializer
 
     def post(self, request):
-        data = { 'case_id': request.data['case'], 'account_id': request.user.id }
+        pdb.set_trace()
+        if 'email' in request.data:
+            data = { 'case_id': request.data['case'], 
+                'account_id': Account.objects.get(email=request.data['email']).id
+            }
+        else:
+            data = { 'case_id': request.data['case'], 'account_id': request.user.id }
         serializer = self.serializer_class(data=data)
         serializer.is_valid(raise_exception=True)
         serializer.save()

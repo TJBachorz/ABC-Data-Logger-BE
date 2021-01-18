@@ -45,11 +45,12 @@ With an established client, the ABC Data Logger can compile incident data logs i
    # Utilizing Graphs and Data:
    <img src="https://media2.giphy.com/media/bPGbOdVYbMimjv1VWU/giphy.gif" width="368" height ="783" />
    
+This data logging isn't just for you! The ABC Data Logger allows users to link cases to other accounts. Now your spouse, close relatives, caretakers, and clinical professionals can all log, and optionally view, incident data across multiple instances!
+   
 ## Future Updates
 
 The ABC Data Logger is currently under active development, with plans to release on Google Play and Apple Stores in the indeterminate future.  Future updates for the app include, but are not limited to:
 
-* Linking cases to several accounts, so spouses, caretakers, and professionals can log and access ABC data in one place.
 * Users' ability to delete cases/accounts/users/incidents.
 * Add more graph/chart options.
 * Include more optional client data.

@@ -2,6 +2,8 @@
 
 >A quick and convenient way to lot ABC data.
 
+Check out the frontend [here](https://github.com/TJBachorz/ABC-Data-Logger-FE)
+
 ## Table of Contents
 * [About](#about)
 * [Intro Video](#intro-video)
@@ -13,9 +15,7 @@
 
 ## About
 
-Hundreds of thousands of families world-wide struggle with the difficulties associated with raising a child with developmental disabilities.  While therapy is important, healthcare professionals cannot always be present to log data relating to incidents of mal-adaptive behavior. Thus, the onus lies with the parents to be able to log these occurances.  There is already enough pressure on the parents of children with developmental disabilities, so there needs to be an easier, quicker way for parents to log this data.  This is the problem that the ABC Data Logger hopes to solve.
-
-Developer's Note:  My name is T.J. Bachorz and this project is the first major product of my education at Flatiron School Denver's Software Engineering program.  My wife is a BCBA (Board Certified Behavioral Analyst) who actively works with children with developmental disabilities, and has been looking for a reliable ABC data logging app for sometime, as it would make her life--as well as her client's lives, much easier.  My goal is to use my newfound passion and skill with technology to create cool things that make the world a better, easier place, so why not start at home?  To this end, I started development on the ABC Data Logger.
+Hundreds of thousands of families world-wide struggle with the difficulties associated with raising a child with developmental disabilities.  While therapy is important, healthcare professionals cannot always be present to log data relating to behavioral incidents. Thus, the onus lies with the parents to be able to log these occurances.  There is already enough pressure on the parents of children with developmental disabilities, so there needs to be an easier, quicker way for parents to log this data.  That quicker way is here with the ABC Data Logger.
 
 ## Intro Video
 
@@ -45,11 +45,12 @@ With an established client, the ABC Data Logger can compile incident data logs i
    # Utilizing Graphs and Data:
    <img src="https://media2.giphy.com/media/bPGbOdVYbMimjv1VWU/giphy.gif" width="368" height ="783" />
    
+This data logging isn't just for you! The ABC Data Logger allows users to link cases to other accounts. Now your spouse, close relatives, caretakers, and clinical professionals can all log, and optionally view, incident data across multiple instances!
+   
 ## Future Updates
 
 The ABC Data Logger is currently under active development, with plans to release on Google Play and Apple Stores in the indeterminate future.  Future updates for the app include, but are not limited to:
 
-* Linking cases to several accounts, so spouses, caretakers, and professionals can log and access ABC data in one place.
 * Users' ability to delete cases/accounts/users/incidents.
 * Add more graph/chart options.
 * Include more optional client data.
@@ -67,8 +68,4 @@ The ABC Data Logger is currently under active development, with plans to release
 
 ## Contact
 
-Check out the frontend [here](https://github.com/TJBachorz/ABC-Data-Logger-FE)
-
-Author : TJ Bachorz
-
-[Github](https://github.com/TJBachorz) -- [Linked-in](https://www.linkedin.com/in/tjbachorz/) -- [Medium](https://tjbachorz.medium.com/)
+[<img src="https://cdn2.iconfinder.com/data/icons/social-icons-33/128/Github-512.png" width="40" height="40"/>](https://github.com/TJBachorz) &nbsp; [<img src="https://cdn2.iconfinder.com/data/icons/social-media-applications/64/social_media_applications_14-linkedin-512.png" width="40" height="40"/>](https://www.linkedin.com/in/tjbachorz/) &nbsp; [<img src="https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/medium-512.png" width="40" height="40"/>](https://tjbachorz.medium.com/)

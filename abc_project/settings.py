@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-import django_heroku
+# import django_heroku
 from pathlib import Path
 from decouple import config
 import datetime
@@ -171,4 +171,4 @@ JWT_AUTH = {
     'JWT_AUTH_COOKIE': None,
 }
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

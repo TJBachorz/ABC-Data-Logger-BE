@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, UserManager
 import datetime
 
-
 class MyAccountManager(UserManager):
 
     def create_user(self, email, username, password=None):
@@ -12,8 +11,8 @@ class MyAccountManager(UserManager):
             raise ValueError("Users must have a username")
 
         user = self.model(
-                email=self.normalize_email(email),
-                username=username,
+            email=self.normalize_email(email),
+            username=username,
         )
 
         user.set_password(password)
